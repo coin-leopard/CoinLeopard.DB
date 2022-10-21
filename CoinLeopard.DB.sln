@@ -5,19 +5,30 @@ VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{3A5E160E-9D39-4A5B-822C-20873529462F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoinLeopard.DB", "src\CoinLeopard.DB\CoinLeopard.DB.csproj", "{47586ECB-0EEB-4C50-A32E-1D808E653716}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CoinLeopard.DB", "src\CoinLeopard.DB\CoinLeopard.DB.csproj", "{47586ECB-0EEB-4C50-A32E-1D808E653716}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{F050D868-317E-4B9F-AD8A-3B7FEAFE69EB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoinLeopard.DB.Tests", "tests\CoinLeopard.DB.Tests\CoinLeopard.DB.Tests.csproj", "{A1F0ABA6-65E5-4021-AE1A-EC6BCC000846}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CoinLeopard.DB.Tests", "tests\CoinLeopard.DB.Tests\CoinLeopard.DB.Tests.csproj", "{A1F0ABA6-65E5-4021-AE1A-EC6BCC000846}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{547ABEC6-1D21-48E5-88CB-E588C1147ECB}"
+	ProjectSection(SolutionItems) = preProject
+		.csharpierrc = .csharpierrc
+		.gitignore = .gitignore
+		.github\workflows\nuget-publish.dev.yml = .github\workflows\nuget-publish.dev.yml
+		.github\workflows\nuget-publish.master.yml = .github\workflows\nuget-publish.master.yml
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CoinLeopard.DB.Migrations.PostgreSQL", "src\CoinLeopard.DB.Migrations.PostgreSQL\CoinLeopard.DB.Migrations.PostgreSQL.csproj", "{75D32676-BA31-453A-9B5C-F2FE70A1C6FB}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CoinLeopard.DB.Extensions.PostgreSQL", "src\CoinLeopard.DB.Extensions.PostgreSQL\CoinLeopard.DB.Extensions.PostgreSQL.csproj", "{61783CC5-E1F9-4CF2-83AF-1337E1B39EFD}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CoinLeopard.DB.Entities", "src\CoinLeopard.DB.Entities\CoinLeopard.DB.Entities.csproj", "{CE1E7414-796E-4A52-815F-BDB9CBF8F8D5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
-	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{47586ECB-0EEB-4C50-A32E-1D808E653716}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -28,9 +39,30 @@ Global
 		{A1F0ABA6-65E5-4021-AE1A-EC6BCC000846}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A1F0ABA6-65E5-4021-AE1A-EC6BCC000846}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A1F0ABA6-65E5-4021-AE1A-EC6BCC000846}.Release|Any CPU.Build.0 = Release|Any CPU
+		{75D32676-BA31-453A-9B5C-F2FE70A1C6FB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{75D32676-BA31-453A-9B5C-F2FE70A1C6FB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{75D32676-BA31-453A-9B5C-F2FE70A1C6FB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{75D32676-BA31-453A-9B5C-F2FE70A1C6FB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{61783CC5-E1F9-4CF2-83AF-1337E1B39EFD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{61783CC5-E1F9-4CF2-83AF-1337E1B39EFD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{61783CC5-E1F9-4CF2-83AF-1337E1B39EFD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{61783CC5-E1F9-4CF2-83AF-1337E1B39EFD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CE1E7414-796E-4A52-815F-BDB9CBF8F8D5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CE1E7414-796E-4A52-815F-BDB9CBF8F8D5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CE1E7414-796E-4A52-815F-BDB9CBF8F8D5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CE1E7414-796E-4A52-815F-BDB9CBF8F8D5}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{47586ECB-0EEB-4C50-A32E-1D808E653716} = {3A5E160E-9D39-4A5B-822C-20873529462F}
 		{A1F0ABA6-65E5-4021-AE1A-EC6BCC000846} = {F050D868-317E-4B9F-AD8A-3B7FEAFE69EB}
+		{75D32676-BA31-453A-9B5C-F2FE70A1C6FB} = {3A5E160E-9D39-4A5B-822C-20873529462F}
+		{61783CC5-E1F9-4CF2-83AF-1337E1B39EFD} = {3A5E160E-9D39-4A5B-822C-20873529462F}
+		{CE1E7414-796E-4A52-815F-BDB9CBF8F8D5} = {3A5E160E-9D39-4A5B-822C-20873529462F}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {2E08E390-20D6-489D-AAC7-C92F37B901C1}
 	EndGlobalSection
 EndGlobal

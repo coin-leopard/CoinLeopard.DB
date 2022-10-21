@@ -1,0 +1,31 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<Version>0.0.1</Version>
+		<Title>CoinLeopard.DB.Extensions.PostgreSQL</Title>
+		<Authors>AT Jevon</Authors>
+		<Description>Coin Leopard database</Description>
+		<TargetFramework>net6.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="6.0.10">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+		<PackageReference  Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="6.0.7" >
+		</PackageReference>
+		<PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL.Design" Version="1.1.0">
+		</PackageReference>
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\CoinLeopard.DB.Migrations.PostgreSQL\CoinLeopard.DB.Migrations.PostgreSQL.csproj">
+		</ProjectReference>
+		<ProjectReference Include="..\CoinLeopard.DB\CoinLeopard.DB.csproj">
+		</ProjectReference>
+	</ItemGroup>
+
+</Project>

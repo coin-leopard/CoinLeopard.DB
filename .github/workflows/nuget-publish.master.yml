@@ -31,7 +31,7 @@ jobs:
         run: dotnet build --configuration 'Release'
 
       - name: Pack
-        run: nuget pack ./src/CoinLeopard.DB.Extensions.PostgreSQL\CoinLeopard.DB.Extensions.PostgreSQL.nuspec -p version=${{ steps.package_version.outputs.version }}
+        run: nuget pack ./src/CoinLeopard.DB.Extensions.PostgreSQL/CoinLeopard.DB.Extensions.PostgreSQL.nuspec -p version=${{ steps.package_version.outputs.version }}
 
       - name: Push
         run: nuget push *.nupkg -src

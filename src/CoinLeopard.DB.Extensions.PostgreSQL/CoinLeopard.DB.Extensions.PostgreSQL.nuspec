@@ -8,6 +8,7 @@
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <license type="expression">MIT</license>
     <projectUrl>https://github.com/coin-leopard/CoinLeopard.DB/</projectUrl>
+	<repository type="git" url="https://github.com/coin-leopard/CoinLeopard.DB.git"></repository>
     <description>Coin Leopard database</description>
     <dependencies>
 		<dependency id="Microsoft.EntityFrameworkCore.Design" version="6.0.10"></dependency>

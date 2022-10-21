@@ -15,6 +15,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 	ProjectSection(SolutionItems) = preProject
 		.csharpierrc = .csharpierrc
 		.gitignore = .gitignore
+		.github\workflows\nuget-publish.dev.yml = .github\workflows\nuget-publish.dev.yml
+		.github\workflows\nuget-publish.master.yml = .github\workflows\nuget-publish.master.yml
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CoinLeopard.DB.Migrations.PostgreSQL", "src\CoinLeopard.DB.Migrations.PostgreSQL\CoinLeopard.DB.Migrations.PostgreSQL.csproj", "{75D32676-BA31-453A-9B5C-F2FE70A1C6FB}"

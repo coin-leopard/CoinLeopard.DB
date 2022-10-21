@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package>
+  <metadata>
+    <id>CoinLeopard.DB.Extensions.PostgreSQL</id>
+    <version>$version$</version>
+    <title>CoinLeopard.DB.Extensions.PostgreSQL</title>
+    <authors>AT Jevon</authors>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <license type="expression">MIT</license>
+    <projectUrl>https://github.com/coin-leopard/CoinLeopard.DB/</projectUrl>
+    <description>Coin Leopard database</description>
+    <dependencies>
+		<dependency id="Microsoft.EntityFrameworkCore.Design" version="6.0.10"></dependency>
+		<dependency id="Npgsql.EntityFrameworkCore.PostgreSQL" version="6.0.7"></dependency>
+		<dependency id="Npgsql.EntityFrameworkCore.PostgreSQL.Design" version="1.1.0"></dependency>
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="bin\Release\net6.0\CoinLeopard.DB.*.dll" target="lib\net6.0" />
+	  <file src="bin\Release\net6.0\CoinLeopard.DB.dll" target="lib\net6.0" />
+  </files>
+</package>

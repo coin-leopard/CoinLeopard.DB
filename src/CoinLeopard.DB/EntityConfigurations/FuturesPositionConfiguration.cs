@@ -9,9 +9,9 @@ public static class FuturesPositionConfiguration
 	{
 		builder.Entity<FuturesPosition>().HasKey(fp => fp.Id);
 
-		builder.Entity<FuturesPosition>().HasOne(fp => fp.Pair).WithMany(cp => cp.Positions).HasForeignKey(fp => fp.CryptoPairId);
+		builder.Entity<FuturesPosition>().HasOne(fp => fp.FuturesSymbol).WithMany(cp => cp.Positions).HasForeignKey(fp => fp.Symbol);
 
-		builder.Entity<FuturesPosition>().Property(fp => fp.Type).HasConversion<int>();
+        builder.Entity<FuturesPosition>().Property(fp => fp.Type).HasConversion<int>();
 
 		return builder;
 	}

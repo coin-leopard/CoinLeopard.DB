@@ -9,13 +9,12 @@ public static class CryptoPairConfiguration
 	{
 		builder.Entity<CryptoPair>().HasKey(cp => cp.Id);
 
-		builder.Entity<CryptoPair>().Property(cp => cp.Left).HasMaxLength(4);
-		builder.Entity<CryptoPair>().Property(cp => cp.Right).HasMaxLength(4);
+		builder.Entity<CryptoPair>().Property(cp => cp.Left).HasMaxLength(6);
+		builder.Entity<CryptoPair>().Property(cp => cp.Right).HasMaxLength(6);
 
 		builder.Entity<CryptoPair>().HasOne(cp => cp.LeftCurrency).WithMany(cc => cc.LeftPairs).HasForeignKey(cp => cp.Left);
 		builder.Entity<CryptoPair>().HasOne(cp => cp.RightCurrency).WithMany(cc => cc.RightPairs).HasForeignKey(cp => cp.Right);
 
-		builder.Entity<CryptoPair>().HasMany(cp => cp.Positions).WithOne(fp => fp.Pair).HasForeignKey(fp => fp.CryptoPairId);
 		builder.Entity<CryptoPair>().HasMany(cp => cp.Trends).WithOne(cpt => cpt.Pair).HasForeignKey(cpt => cpt.CryptoPairId);
 
 		return builder;

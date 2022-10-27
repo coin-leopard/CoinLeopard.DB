@@ -10,7 +10,7 @@ namespace CoinLeopard.DB.EntityConfigurations
 		{
 			builder.Entity<CryptoCurrency>().HasKey(e => e.Code);
 
-			builder.Entity<CryptoCurrency>().Property(e => e.Code).HasMaxLength(4);
+			builder.Entity<CryptoCurrency>().Property(e => e.Code).HasMaxLength(6);
 
 			builder.Entity<CryptoCurrency>().HasMany(cc => cc.LeftPairs).WithOne(cc => cc.LeftCurrency).HasForeignKey(cc => cc.Left);
 

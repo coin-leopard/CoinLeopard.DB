@@ -26,6 +26,5 @@ public class CoinLeopardContext : DbContext
 				.ConfigureFuturesSymbol()
 				.ConfigureContractTrendEntry()
 		);
-		;
 	}
 }

@@ -9,7 +9,6 @@ public class FuturesPosition
 	public decimal BaseAssetAmount { get; set; }
 	public string Symbol { get; set; } = null!;
 	public DateTime CreatedDate { get; set; }
-	public DateTime ClosedDate { get; set; }
-	public decimal ProfitLoss { get; set; }
+	public DateTime? ClosedDate { get; set; }
 	public virtual FuturesSymbol? FuturesSymbol { get; set; }
 }

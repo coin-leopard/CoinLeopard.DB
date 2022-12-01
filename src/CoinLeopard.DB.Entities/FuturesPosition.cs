@@ -7,8 +7,11 @@ public class FuturesPosition
 	public Guid Id { get; set; }
 	public FuturesPositionType Type { get; set; }
 	public decimal BaseAssetAmount { get; set; }
+	public decimal PNL { get; set; }
 	public string Symbol { get; set; } = null!;
 	public DateTime CreatedDate { get; set; }
 	public DateTime? ClosedDate { get; set; }
 	public virtual FuturesSymbol? FuturesSymbol { get; set; }
+	public string ClientOrderId { get; set; } = null!;
+	public bool TestMode { get; set; }
 }

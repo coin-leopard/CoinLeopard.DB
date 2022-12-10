@@ -5,7 +5,7 @@ namespace CoinLeopard.DB.EntityConfigurations;
 
 public static class AnalysisIntervalConfiguration
 {
-	public static ModelBuilder ConfigureAnalysisInterval(this ModelBuilder builder)
+	public static ModelBuilder ConfigureAnalysisIntervalEntity(this ModelBuilder builder)
 	{
 		builder.Entity<AnalysisInterval>().HasKey(ai => ai.Id);
 

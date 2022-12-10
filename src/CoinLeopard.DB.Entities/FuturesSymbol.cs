@@ -7,8 +7,8 @@ namespace CoinLeopard.DB.Entities
 	{
 		public string Symbol { get; set; } = null!;
 		public BaseCrypto BaseCrypto { get; set; }
-		public virtual ICollection<ContractTrendEntry> TrendEntries { get; set; } = new Collection<ContractTrendEntry>();
-		public virtual ICollection<FuturesPosition> Positions { get; set; } = new Collection<FuturesPosition>();
-		public virtual ICollection<AnalysisInterval> Analyses { get; set; } = new Collection<AnalysisInterval>();
+		public virtual ICollection<ContractTrendEntry>? TrendEntries { get; set; }
+		public virtual ICollection<AnalysisInterval>? Analyses { get; set; }
+		public virtual ICollection<FuturesPositionBatch>? Batches { get; set; }
 	}
 }

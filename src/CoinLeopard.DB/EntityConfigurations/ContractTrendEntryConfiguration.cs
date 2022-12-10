@@ -5,7 +5,7 @@ namespace CoinLeopard.DB.EntityConfigurations;
 
 public static class ContractTrendEntryConfiguration
 {
-	public static ModelBuilder ConfigureContractTrendEntry(this ModelBuilder builder)
+	public static ModelBuilder ConfigureContractTrendEntryInterval(this ModelBuilder builder)
 	{
 		builder.Entity<ContractTrendEntry>().HasKey(cte => cte.Id);
 

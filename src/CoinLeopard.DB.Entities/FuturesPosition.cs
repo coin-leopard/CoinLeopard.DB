@@ -5,13 +5,12 @@ namespace CoinLeopard.DB.Entities;
 public class FuturesPosition
 {
 	public Guid Id { get; set; }
+	public Guid BatchId { get; set; }
+	public decimal Price { get; set; }
+	public decimal? StopPrice { get; set; }
+	public FuturesOrderSide OrderSide { get; set; }
+	public FuturesPositionSide PositionSide { get; set; }
 	public FuturesPositionType Type { get; set; }
-	public decimal BaseAssetAmount { get; set; }
-	public decimal PNL { get; set; }
-	public string Symbol { get; set; } = null!;
-	public DateTime CreatedDate { get; set; }
-	public DateTime? ClosedDate { get; set; }
-	public virtual FuturesSymbol? FuturesSymbol { get; set; }
 	public string ClientOrderId { get; set; } = null!;
-	public bool TestMode { get; set; }
+	public virtual FuturesPositionBatch? Batch { get; set; }
 }

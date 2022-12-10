@@ -9,9 +9,11 @@ public static class FuturesPositionConfiguration
 	{
 		builder.Entity<FuturesPosition>().HasKey(fp => fp.Id);
 
-		builder.Entity<FuturesPosition>().HasOne(fp => fp.FuturesSymbol).WithMany(cp => cp.Positions).HasForeignKey(fp => fp.Symbol);
+		builder.Entity<FuturesPosition>().Property(fp => fp.Type).HasConversion<int>();
+		builder.Entity<FuturesPosition>().Property(fp => fp.OrderSide).HasConversion<int>();
+		builder.Entity<FuturesPosition>().Property(fp => fp.PositionSide).HasConversion<int>();
 
-        builder.Entity<FuturesPosition>().Property(fp => fp.Type).HasConversion<int>();
+		builder.Entity<FuturesPosition>().HasOne(fp => fp.Batch).WithMany(fpb => fpb.Positions).HasForeignKey(fp => fp.BatchId);
 
 		return builder;
 	}

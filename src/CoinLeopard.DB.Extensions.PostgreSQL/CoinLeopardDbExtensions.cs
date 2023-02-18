@@ -20,4 +20,19 @@ public static class CoinLeopardDbExtensions
 
 		return services;
 	}
+
+	public static async Task MigrateAsync(string connectionString)
+	{
+		var dbContextOptionsBuilder = new DbContextOptionsBuilder().UseNpgsql(
+			connectionString,
+			opts =>
+			{
+				opts.MigrationsAssembly("CoinLeopard.DB.Migrations.PostgreSQL");
+			}
+		);
+
+		var db = new CoinLeopardContext(dbContextOptionsBuilder.Options);
+
+		await db.Database.MigrateAsync();
+	}
 }

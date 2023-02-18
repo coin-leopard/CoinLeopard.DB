@@ -9,6 +9,6 @@ namespace CoinLeopard.DB.Entities
 		public BaseCrypto BaseCrypto { get; set; }
 		public virtual ICollection<ContractTrendEntry>? TrendEntries { get; set; }
 		public virtual ICollection<AnalysisInterval>? Analyses { get; set; }
-		public virtual ICollection<FuturesPositionBatch>? Batches { get; set; }
+		public virtual ICollection<FuturesPosition>? Positions { get; set; }
 	}
 }

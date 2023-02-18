@@ -13,7 +13,8 @@ public static class FuturesPositionConfiguration
 		builder.Entity<FuturesPosition>().Property(fp => fp.OrderSide).HasConversion<int>();
 		builder.Entity<FuturesPosition>().Property(fp => fp.PositionSide).HasConversion<int>();
 
-		builder.Entity<FuturesPosition>().HasOne(fp => fp.Batch).WithMany(fpb => fpb.Positions).HasForeignKey(fp => fp.BatchId);
+		builder.Entity<FuturesPosition>().HasOne(fp => fp.FuturesSymbol).WithMany(fs => fs.Positions).HasForeignKey(fp => fp.Symbol);
+
 
 		return builder;
 	}

@@ -3,6 +3,7 @@ using System;
 using CoinLeopard.DB;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,10 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace CoinLeopard.DB.Migrations.PostgreSQL.Migrations
 {
     [DbContext(typeof(CoinLeopardContext))]
-    partial class CoinLeopardContextModelSnapshot : ModelSnapshot
+    [Migration("20230218115533_PositionChanges")]
+    partial class PositionChanges
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -164,17 +166,8 @@ namespace CoinLeopard.DB.Migrations.PostgreSQL.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<bool>("Closed")
-                        .HasColumnType("boolean");
-
                     b.Property<Guid?>("CryptoPairId")
                         .HasColumnType("uuid");
-
-                    b.Property<DateTime?>("DateClosed")
-                        .HasColumnType("timestamp with time zone");
-
-                    b.Property<DateTime>("DateOpened")
-                        .HasColumnType("timestamp with time zone");
 
                     b.Property<decimal>("EntryPrice")
                         .HasColumnType("numeric");

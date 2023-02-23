@@ -14,6 +14,7 @@ public class CoinLeopardContext : DbContext
 	public virtual DbSet<CryptoPairTrend> CryptoPairTrends { get; set; } = null!;
 	public virtual DbSet<ContractTrendEntry> ContractTrends { get; set; } = null!;
 	public virtual DbSet<FuturesSymbol> FuturesSymbols { get; set; } = null!;
+	public virtual DbSet<AnalysisInterval> Analyses { get; set; } = null!;
 
 	protected override void OnModelCreating(ModelBuilder modelBuilder)
 	{
@@ -23,9 +24,9 @@ public class CoinLeopardContext : DbContext
 				.ConfigureCryptoPairEntity()
 				.ConfigureCryptoPairTrendEntity()
 				.ConfigureFuturesPositionEntity()
-				.ConfigureFuturesSymbol()
-				.ConfigureContractTrendEntry()
+				.ConfigureFuturesSymbolEntity()
+				.ConfigureContractTrendEntryInterval()
+				.ConfigureAnalysisIntervalEntity()
 		);
-		;
 	}
 }

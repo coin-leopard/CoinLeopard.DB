@@ -3,6 +3,7 @@ using System;
 using CoinLeopard.DB;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,10 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace CoinLeopard.DB.Migrations.PostgreSQL.Migrations
 {
     [DbContext(typeof(CoinLeopardContext))]
-    partial class CoinLeopardContextModelSnapshot : ModelSnapshot
+    [Migration("20221115102214_DirectionFactor")]
+    partial class DirectionFactor
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -38,9 +40,6 @@ namespace CoinLeopard.DB.Migrations.PostgreSQL.Migrations
                         .HasColumnType("numeric");
 
                     b.Property<decimal>("InclinationDirectionFactor")
-                        .HasColumnType("numeric");
-
-                    b.Property<decimal>("LastMarketPrice")
                         .HasColumnType("numeric");
 
                     b.Property<decimal>("Low")
@@ -160,52 +159,21 @@ namespace CoinLeopard.DB.Migrations.PostgreSQL.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
 
-                    b.Property<string>("ClientOrderId")
-                        .IsRequired()
-                        .HasColumnType("text");
+                    b.Property<decimal>("BaseAssetAmount")
+                        .HasColumnType("numeric");
 
-                    b.Property<bool>("Closed")
-                        .HasColumnType("boolean");
+                    b.Property<DateTime?>("ClosedDate")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("timestamp with time zone");
 
                     b.Property<Guid?>("CryptoPairId")
                         .HasColumnType("uuid");
 
-                    b.Property<DateTime?>("DateClosed")
-                        .HasColumnType("timestamp with time zone");
-
-                    b.Property<DateTime>("DateOpened")
-                        .HasColumnType("timestamp with time zone");
-
-                    b.Property<decimal>("EntryPrice")
-                        .HasColumnType("numeric");
-
-                    b.Property<int>("OrderSide")
-                        .HasColumnType("integer");
-
-                    b.Property<decimal?>("PNL")
-                        .HasColumnType("numeric");
-
-                    b.Property<int>("PositionSide")
-                        .HasColumnType("integer");
-
-                    b.Property<decimal>("Quantity")
-                        .HasColumnType("numeric");
-
-                    b.Property<long?>("StopLossOrderId")
-                        .HasColumnType("bigint");
-
-                    b.Property<decimal>("StopPrice")
-                        .HasColumnType("numeric");
-
                     b.Property<string>("Symbol")
                         .IsRequired()
                         .HasColumnType("text");
-
-                    b.Property<long?>("TakeProfitOrderId")
-                        .HasColumnType("bigint");
-
-                    b.Property<decimal>("TakeProfitPrice")
-                        .HasColumnType("numeric");
 
                     b.Property<int>("Type")
                         .HasColumnType("integer");

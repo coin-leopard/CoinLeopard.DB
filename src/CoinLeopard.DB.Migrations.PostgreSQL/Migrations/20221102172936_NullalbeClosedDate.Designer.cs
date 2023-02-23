@@ -3,6 +3,7 @@ using System;
 using CoinLeopard.DB;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,10 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace CoinLeopard.DB.Migrations.PostgreSQL.Migrations
 {
     [DbContext(typeof(CoinLeopardContext))]
-    partial class CoinLeopardContextModelSnapshot : ModelSnapshot
+    [Migration("20221102172936_NullalbeClosedDate")]
+    partial class NullalbeClosedDate
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -21,44 +23,6 @@ namespace CoinLeopard.DB.Migrations.PostgreSQL.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 63);
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
-
-            modelBuilder.Entity("CoinLeopard.DB.Entities.AnalysisInterval", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uuid");
-
-                    b.Property<DateTime>("End")
-                        .HasColumnType("timestamp with time zone");
-
-                    b.Property<decimal>("High")
-                        .HasColumnType("numeric");
-
-                    b.Property<decimal>("Inclination")
-                        .HasColumnType("numeric");
-
-                    b.Property<decimal>("InclinationDirectionFactor")
-                        .HasColumnType("numeric");
-
-                    b.Property<decimal>("LastMarketPrice")
-                        .HasColumnType("numeric");
-
-                    b.Property<decimal>("Low")
-                        .HasColumnType("numeric");
-
-                    b.Property<DateTime>("Start")
-                        .HasColumnType("timestamp with time zone");
-
-                    b.Property<string>("Symbol")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("Symbol");
-
-                    b.ToTable("Analyses");
-                });
 
             modelBuilder.Entity("CoinLeopard.DB.Entities.ContractTrendEntry", b =>
                 {
@@ -160,52 +124,21 @@ namespace CoinLeopard.DB.Migrations.PostgreSQL.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
 
-                    b.Property<string>("ClientOrderId")
-                        .IsRequired()
-                        .HasColumnType("text");
+                    b.Property<decimal>("BaseAssetAmount")
+                        .HasColumnType("numeric");
 
-                    b.Property<bool>("Closed")
-                        .HasColumnType("boolean");
+                    b.Property<DateTime?>("ClosedDate")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("timestamp with time zone");
 
                     b.Property<Guid?>("CryptoPairId")
                         .HasColumnType("uuid");
 
-                    b.Property<DateTime?>("DateClosed")
-                        .HasColumnType("timestamp with time zone");
-
-                    b.Property<DateTime>("DateOpened")
-                        .HasColumnType("timestamp with time zone");
-
-                    b.Property<decimal>("EntryPrice")
-                        .HasColumnType("numeric");
-
-                    b.Property<int>("OrderSide")
-                        .HasColumnType("integer");
-
-                    b.Property<decimal?>("PNL")
-                        .HasColumnType("numeric");
-
-                    b.Property<int>("PositionSide")
-                        .HasColumnType("integer");
-
-                    b.Property<decimal>("Quantity")
-                        .HasColumnType("numeric");
-
-                    b.Property<long?>("StopLossOrderId")
-                        .HasColumnType("bigint");
-
-                    b.Property<decimal>("StopPrice")
-                        .HasColumnType("numeric");
-
                     b.Property<string>("Symbol")
                         .IsRequired()
                         .HasColumnType("text");
-
-                    b.Property<long?>("TakeProfitOrderId")
-                        .HasColumnType("bigint");
-
-                    b.Property<decimal>("TakeProfitPrice")
-                        .HasColumnType("numeric");
 
                     b.Property<int>("Type")
                         .HasColumnType("integer");
@@ -224,23 +157,9 @@ namespace CoinLeopard.DB.Migrations.PostgreSQL.Migrations
                     b.Property<string>("Symbol")
                         .HasColumnType("text");
 
-                    b.Property<int>("BaseCrypto")
-                        .HasColumnType("integer");
-
                     b.HasKey("Symbol");
 
                     b.ToTable("FuturesSymbols");
-                });
-
-            modelBuilder.Entity("CoinLeopard.DB.Entities.AnalysisInterval", b =>
-                {
-                    b.HasOne("CoinLeopard.DB.Entities.FuturesSymbol", "FuturesSymbol")
-                        .WithMany("Analyses")
-                        .HasForeignKey("Symbol")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("FuturesSymbol");
                 });
 
             modelBuilder.Entity("CoinLeopard.DB.Entities.ContractTrendEntry", b =>
@@ -315,8 +234,6 @@ namespace CoinLeopard.DB.Migrations.PostgreSQL.Migrations
 
             modelBuilder.Entity("CoinLeopard.DB.Entities.FuturesSymbol", b =>
                 {
-                    b.Navigation("Analyses");
-
                     b.Navigation("Positions");
 
                     b.Navigation("TrendEntries");

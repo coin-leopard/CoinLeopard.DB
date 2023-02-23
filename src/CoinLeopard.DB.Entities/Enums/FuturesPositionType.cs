@@ -1,8 +1,13 @@
-﻿namespace CoinLeopard.DB.Entities.Enums
+﻿namespace CoinLeopard.DB.Entities.Enums;
+
+public enum FuturesPositionType
 {
-    public enum FuturesPositionType
-    {
-        Short,
-        Long
-    }
+	Limit,
+	Market,
+	Stop,
+	StopMarket,
+	TakeProfit,
+	TakeProfitMarket,
+	TrailingStopMarket,
+	Liquidation
 }

@@ -1,5 +1,6 @@
 {
     "yaml.schemas": {
         "https://json.schemastore.org/github-workflow.json": "file:///c%3A/code/CoinLeopard/CoinLeopard.DB/.github/workflows/nuget-publish.dev.yml"
-    }
+    },
+    "workbench.colorTheme": "Dracula"
 }

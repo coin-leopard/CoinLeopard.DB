@@ -11,8 +11,8 @@
     <repository type="git" url="https://github.com/coin-leopard/CoinLeopard.DB.git"></repository>
     <description>Coin Leopard database</description>
     <dependencies>
-      <dependency id="Microsoft.EntityFrameworkCore.Design" version="6.0.10"></dependency>
-      <dependency id="Npgsql.EntityFrameworkCore.PostgreSQL" version="6.0.7"></dependency>
+      <dependency id="Microsoft.EntityFrameworkCore.Design" version="8.0.4"></dependency>
+      <dependency id="Npgsql.EntityFrameworkCore.PostgreSQL" version="8.0.2"></dependency>
       <dependency id="Npgsql.EntityFrameworkCore.PostgreSQL.Design" version="1.1.0"></dependency>
     </dependencies>
   </metadata>

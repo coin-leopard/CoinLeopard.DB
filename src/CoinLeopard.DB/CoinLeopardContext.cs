@@ -27,6 +27,7 @@ public class CoinLeopardContext : DbContext
 				.ConfigureFuturesSymbolEntity()
 				.ConfigureContractTrendEntryInterval()
 				.ConfigureAnalysisIntervalEntity()
+				.ConfigureAssetValueEntryEntity()
 		);
 	}
 }

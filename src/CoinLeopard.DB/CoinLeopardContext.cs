@@ -6,7 +6,8 @@ namespace CoinLeopard.DB;
 
 public class CoinLeopardContext : DbContext
 {
-	public CoinLeopardContext(DbContextOptions options) : base(options) { }
+	public CoinLeopardContext(DbContextOptions options)
+		: base(options) { }
 
 	public virtual DbSet<CryptoCurrency> CryptoCurrencies { get; set; } = null!;
 	public virtual DbSet<CryptoPair> CryptoPairs { get; set; } = null!;
@@ -15,6 +16,7 @@ public class CoinLeopardContext : DbContext
 	public virtual DbSet<ContractTrendEntry> ContractTrends { get; set; } = null!;
 	public virtual DbSet<FuturesSymbol> FuturesSymbols { get; set; } = null!;
 	public virtual DbSet<AnalysisInterval> Analyses { get; set; } = null!;
+	public virtual DbSet<AssetValueEntry> AssetValueEntries { get; set; } = null!;
 
 	protected override void OnModelCreating(ModelBuilder modelBuilder)
 	{

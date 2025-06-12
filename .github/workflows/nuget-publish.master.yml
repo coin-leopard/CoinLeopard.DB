@@ -17,7 +17,7 @@ jobs:
       - name: Setup Nuget
         uses: nuget/setup-nuget@v1
         with:
-          nuget-version: "5.x"
+          nuget-version: "6.x"
 
       - name: Get Version
         id: package_version

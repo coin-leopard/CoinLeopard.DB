@@ -14,10 +14,15 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v3
 
-      - name: Setup Nuget
+      - name: Setup NuGet
         uses: nuget/setup-nuget@v1
         with:
           nuget-version: "6.x"
+
+      - name: Setup Mono
+        uses: crazy-max/ghaction-setup-mono@v2
+        with:
+          mono-version: "latest"
 
       - name: Get Version
         id: package_version

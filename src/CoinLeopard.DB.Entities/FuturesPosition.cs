@@ -19,7 +19,7 @@ public class FuturesPosition
 	public FuturesPositionSide PositionSide { get; set; }
 	public FuturesPositionType Type { get; set; }
 	public string ClientOrderId { get; set; } = null!;
-	public long? OrderId { get; set; }
+	public long OrderId { get; set; }
 	public decimal? PNL { get; set; }
 	public virtual FuturesSymbol? FuturesSymbol { get; set; }
 	public string? AnalysisSnapshot { get; set; }

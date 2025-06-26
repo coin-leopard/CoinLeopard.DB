@@ -16,6 +16,7 @@ public class CoinLeopardContext : DbContext
 	public virtual DbSet<FuturesSymbol> FuturesSymbols { get; set; } = null!;
 	public virtual DbSet<AnalysisInterval> Analyses { get; set; } = null!;
 	public virtual DbSet<AssetValueEntry> AssetValueEntries { get; set; } = null!;
+	public virtual DbSet<FuturesLimitOrder> FuturesLimitOrders { get; set; } = null!;
 
 	protected override void OnModelCreating(ModelBuilder modelBuilder)
 	{

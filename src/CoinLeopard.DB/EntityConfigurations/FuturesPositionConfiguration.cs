@@ -15,7 +15,6 @@ public static class FuturesPositionConfiguration
 
 		builder.Entity<FuturesPosition>().HasOne(fp => fp.FuturesSymbol).WithMany(fs => fs.Positions).HasForeignKey(fp => fp.Symbol);
 
-
 		return builder;
 	}
 }

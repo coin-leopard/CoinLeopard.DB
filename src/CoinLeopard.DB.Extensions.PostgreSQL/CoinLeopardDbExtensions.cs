@@ -5,7 +5,11 @@ namespace CoinLeopard.DB.Extensions.PostgreSQL;
 
 public static class CoinLeopardDbExtensions
 {
-	public static IServiceCollection AddCoinLeopardDb(this IServiceCollection services, string connectionString, Action<DbContextOptionsBuilder>? setup = null)
+	public static IServiceCollection AddCoinLeopardDb(
+		this IServiceCollection services,
+		string connectionString,
+		Action<DbContextOptionsBuilder>? setup = null
+	)
 	{
 		services.AddDbContext<CoinLeopardContext>(options =>
 		{

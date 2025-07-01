@@ -1,6 +1,6 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <Version>0.3.2</Version>
+    <Version>0.3.3</Version>
     <Title>CoinLeopard.DB.Extensions.PostgreSQL</Title>
     <Authors>AT Jevon</Authors>
     <Description>Coin Leopard database</Description>

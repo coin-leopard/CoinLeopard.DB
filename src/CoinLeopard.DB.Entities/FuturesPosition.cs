@@ -6,6 +6,7 @@ public class FuturesPosition
 {
 	public Guid Id { get; set; }
 	public string Symbol { get; set; } = null!;
+	public bool Virtual { get; set; }
 	public decimal EntryPrice { get; set; }
 	public decimal Quantity { get; set; }
 	public decimal TakeProfitPrice { get; set; }

@@ -8,7 +8,6 @@ public class Heuristic
 	public string Symbol { get; set; } = null!;
 	public string Name { get; set; } = null!;
 	public int EntrySize { get; set; }
-	public decimal FirstEntryValue { get; set; }
 	public decimal Value { get; set; }
 	public DateTime LastUpdated { get; set; }
 

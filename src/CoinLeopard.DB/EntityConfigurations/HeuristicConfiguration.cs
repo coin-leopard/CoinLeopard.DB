@@ -14,7 +14,6 @@ public static class HeuristicConfiguration
 			entity.Property(e => e.Symbol).IsRequired();
 			entity.Property(e => e.Name).IsRequired();
 			entity.Property(e => e.EntrySize).IsRequired();
-			entity.Property(e => e.FirstEntryValue).IsRequired();
 			entity.Property(e => e.Value).IsRequired();
 			entity.Property(e => e.LastUpdated).IsRequired();
 		});

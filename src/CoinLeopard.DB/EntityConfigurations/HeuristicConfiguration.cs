@@ -18,7 +18,11 @@ public static class HeuristicConfiguration
 			entity.Property(e => e.LastUpdated).IsRequired();
 		});
 
-		modelBuilder.Entity<Heuristic>().HasOne<FuturesSymbol>(h => h.FuturesSymbol).WithMany(fs => fs.Heuristics);
+		modelBuilder
+			.Entity<Heuristic>()
+			.HasOne<FuturesSymbol>(h => h.FuturesSymbol)
+			.WithMany(fs => fs.Heuristics)
+			.HasForeignKey(h => h.Symbol);
 
 		modelBuilder.Entity<Heuristic>().HasIndex(h => new { h.Symbol, h.Name });
 

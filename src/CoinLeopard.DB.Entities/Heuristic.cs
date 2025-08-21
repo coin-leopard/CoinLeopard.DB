@@ -11,5 +11,5 @@ public class Heuristic
 	public decimal Value { get; set; }
 	public DateTime LastUpdated { get; set; }
 
-	public FuturesSymbol? FuturesSymbol { get; set; } = null!;
+	public virtual FuturesSymbol? FuturesSymbol { get; set; } = null!;
 }

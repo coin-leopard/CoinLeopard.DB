@@ -16,15 +16,11 @@ public static class HeuristicConfiguration
 			entity.Property(e => e.EntrySize).IsRequired();
 			entity.Property(e => e.Value).IsRequired();
 			entity.Property(e => e.LastUpdated).IsRequired();
+
+			entity.HasOne(h => h.FuturesSymbol).WithMany(fs => fs.Heuristics).HasForeignKey(h => h.Symbol).HasPrincipalKey(fs => fs.Symbol);
+
+			entity.HasIndex(h => new { h.Symbol, h.Name });
 		});
-
-		modelBuilder
-			.Entity<Heuristic>()
-			.HasOne<FuturesSymbol>(h => h.FuturesSymbol)
-			.WithMany(fs => fs.Heuristics)
-			.HasForeignKey(h => h.Symbol);
-
-		modelBuilder.Entity<Heuristic>().HasIndex(h => new { h.Symbol, h.Name });
 
 		return modelBuilder;
 	}

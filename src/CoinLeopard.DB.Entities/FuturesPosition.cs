@@ -22,6 +22,7 @@ public class FuturesPosition
 	public string ClientOrderId { get; set; } = null!;
 	public long OrderId { get; set; }
 	public decimal? PNL { get; set; }
+	public decimal Fees { get; set; }
 	public virtual FuturesSymbol? FuturesSymbol { get; set; }
 	public string? AnalysisSnapshot { get; set; }
 }

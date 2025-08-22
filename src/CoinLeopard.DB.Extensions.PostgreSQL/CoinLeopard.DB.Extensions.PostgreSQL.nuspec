@@ -17,7 +17,7 @@
     </dependencies>
   </metadata>
   <files>
-    <file src="bin\Release\net8.0\CoinLeopard.DB.*.dll" target="lib\net9.0" />
-    <file src="bin\Release\net8.0\CoinLeopard.DB.dll" target="lib\net9.0" />
+    <file src="bin\Release\net9.0\CoinLeopard.DB.*.dll" target="lib\net9.0" />
+    <file src="bin\Release\net9.0\CoinLeopard.DB.dll" target="lib\net9.0" />
   </files>
 </package>

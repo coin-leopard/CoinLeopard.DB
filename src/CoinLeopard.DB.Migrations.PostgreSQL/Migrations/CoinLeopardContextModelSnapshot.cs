@@ -304,9 +304,6 @@ namespace CoinLeopard.DB.Migrations.PostgreSQL.Migrations
                     b.Property<int>("EntrySize")
                         .HasColumnType("integer");
 
-                    b.Property<string>("FuturesSymbolSymbol")
-                        .HasColumnType("text");
-
                     b.Property<DateTime>("LastUpdated")
                         .HasColumnType("timestamp with time zone");
 
@@ -322,8 +319,6 @@ namespace CoinLeopard.DB.Migrations.PostgreSQL.Migrations
                         .HasColumnType("numeric");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("FuturesSymbolSymbol");
 
                     b.ToTable("Heuristics");
                 });

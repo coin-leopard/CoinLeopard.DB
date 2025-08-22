@@ -19,7 +19,7 @@ public static class HeuristicConfiguration
 
 			entity.HasOne(h => h.FuturesSymbol).WithMany(fs => fs.Heuristics).HasForeignKey(h => h.Symbol).HasPrincipalKey(fs => fs.Symbol);
 
-			entity.HasIndex(h => new { h.Symbol, h.Name });
+			entity.HasIndex(h => new { h.Symbol, h.Name }, name: "IX_Heuristics_Symbol_Name");
 		});
 
 		return modelBuilder;

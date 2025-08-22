@@ -32,6 +32,7 @@ public class CoinLeopardContext : DbContext
 				.ConfigureAnalysisIntervalEntity()
 				.ConfigureAssetValueEntryEntity()
 				.ConfigureFuturesLimitOrderEntity()
+				.ConfigureHeuristicEntity()
 		);
 	}
 }

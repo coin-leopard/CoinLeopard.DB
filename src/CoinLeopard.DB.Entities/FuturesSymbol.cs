@@ -11,5 +11,6 @@ namespace CoinLeopard.DB.Entities
 		public virtual ICollection<AnalysisInterval>? Analyses { get; set; }
 		public virtual ICollection<FuturesPosition>? Positions { get; set; }
 		public virtual ICollection<Heuristic>? Heuristics { get; set; }
+		public virtual ICollection<KlineEntry>? KlineEntries { get; set; }
 	}
 }

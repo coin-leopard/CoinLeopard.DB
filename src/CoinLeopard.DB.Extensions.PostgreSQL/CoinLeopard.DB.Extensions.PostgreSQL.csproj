@@ -1,6 +1,6 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <Version>2.0.0</Version>
+    <Version>2.0.1</Version>
     <Title>CoinLeopard.DB.Extensions.PostgreSQL</Title>
     <Authors>AT Jevon</Authors>
     <Description>Coin Leopard database</Description>
@@ -20,15 +20,8 @@
     <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="10.0.3" />
   </ItemGroup>
   <ItemGroup>
-    <!-- PrivateAssets=all bundles the project DLLs into the package instead of listing them as NuGet dependencies -->
-    <ProjectReference Include="..\CoinLeopard.DB.Migrations.PostgreSQL\CoinLeopard.DB.Migrations.PostgreSQL.csproj">
-      <PrivateAssets>all</PrivateAssets>
-    </ProjectReference>
-    <ProjectReference Include="..\CoinLeopard.DB.Ticks\CoinLeopard.DB.Ticks.csproj">
-      <PrivateAssets>all</PrivateAssets>
-    </ProjectReference>
-    <ProjectReference Include="..\CoinLeopard.DB\CoinLeopard.DB.csproj">
-      <PrivateAssets>all</PrivateAssets>
-    </ProjectReference>
+    <ProjectReference Include="..\CoinLeopard.DB.Migrations.PostgreSQL\CoinLeopard.DB.Migrations.PostgreSQL.csproj" />
+    <ProjectReference Include="..\CoinLeopard.DB.Ticks\CoinLeopard.DB.Ticks.csproj" />
+    <ProjectReference Include="..\CoinLeopard.DB\CoinLeopard.DB.csproj" />
   </ItemGroup>
 </Project>

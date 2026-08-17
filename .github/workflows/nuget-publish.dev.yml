@@ -14,12 +14,12 @@ jobs:
 
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
-      - name: Setup Nuget
-        uses: nuget/setup-nuget@v1
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
         with:
-          nuget-version: "5.x"
+          dotnet-version: "10.0.x"
 
       - name: Get Version
         id: package_version
@@ -28,9 +28,10 @@ jobs:
           proj-path: src/CoinLeopard.DB.Extensions.PostgreSQL/CoinLeopard.DB.Extensions.PostgreSQL.csproj
 
       - name: Build
-        run: dotnet build --configuration 'Release'
+        run: dotnet build --configuration Release
+
       - name: Pack
-        run: nuget pack ./src/CoinLeopard.DB.Extensions.PostgreSQL/CoinLeopard.DB.Extensions.PostgreSQL.nuspec -p version=${{ steps.package_version.outputs.version }}-${{ github.run_number }}
+        run: dotnet pack src/CoinLeopard.DB.Extensions.PostgreSQL/CoinLeopard.DB.Extensions.PostgreSQL.csproj --configuration Release --no-build --output . -p:Version=${{ steps.package_version.outputs.version }}-${{ github.run_number }}
 
       - name: Push
-        run: nuget push *.nupkg -src "https://nuget.pkg.github.com/coin-leopard/index.json" -ApiKey ${{ secrets.PAT }}
+        run: dotnet nuget push "*.nupkg" --source "https://nuget.pkg.github.com/coin-leopard/index.json" --api-key ${{ secrets.PAT }}

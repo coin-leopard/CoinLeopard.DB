@@ -12,31 +12,18 @@ jobs:
 
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Setup .NET
         uses: actions/setup-dotnet@v4
         with:
           dotnet-version: "10.0.x"
 
-      - run: sudo apt-get install mono-devel
-
-      - name: Setup NuGet
-        uses: nuget/setup-nuget@v2
-        with:
-          nuget-version: "6.x"
-
-      - name: Get Version
-        id: package_version
-        uses: kzrnm/get-net-sdk-project-versions-action@v1.1.1
-        with:
-          proj-path: src/CoinLeopard.DB.Extensions.PostgreSQL/CoinLeopard.DB.Extensions.PostgreSQL.csproj
-
       - name: Build
-        run: dotnet build --configuration 'Release'
+        run: dotnet build --configuration Release
 
       - name: Pack
-        run: nuget pack ./src/CoinLeopard.DB.Extensions.PostgreSQL/CoinLeopard.DB.Extensions.PostgreSQL.nuspec -p version=${{ steps.package_version.outputs.version }}
+        run: dotnet pack src/CoinLeopard.DB.Extensions.PostgreSQL/CoinLeopard.DB.Extensions.PostgreSQL.csproj --configuration Release --no-build --output .
 
       - name: Push
-        run: nuget push *.nupkg -src "https://nuget.pkg.github.com/coin-leopard/index.json" -ApiKey ${{ secrets.PAT }}
+        run: dotnet nuget push "*.nupkg" --source "https://nuget.pkg.github.com/coin-leopard/index.json" --api-key ${{ secrets.PAT }}

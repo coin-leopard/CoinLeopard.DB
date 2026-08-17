@@ -1,6 +1,6 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <Version>2.0.1</Version>
+    <Version>2.0.2</Version>
     <Title>CoinLeopard.DB.Extensions.PostgreSQL</Title>
     <Authors>AT Jevon</Authors>
     <Description>Coin Leopard database</Description>
@@ -18,10 +18,24 @@
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
     <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="10.0.3" />
+    <PackageReference Include="CmdScale.EntityFrameworkCore.TimescaleDB" Version="10.1.2" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\CoinLeopard.DB.Migrations.PostgreSQL\CoinLeopard.DB.Migrations.PostgreSQL.csproj" />
-    <ProjectReference Include="..\CoinLeopard.DB.Ticks\CoinLeopard.DB.Ticks.csproj" />
-    <ProjectReference Include="..\CoinLeopard.DB\CoinLeopard.DB.csproj" />
+    <ProjectReference Include="..\CoinLeopard.DB.Migrations.PostgreSQL\CoinLeopard.DB.Migrations.PostgreSQL.csproj">
+      <PrivateAssets>all</PrivateAssets>
+    </ProjectReference>
+    <ProjectReference Include="..\CoinLeopard.DB.Ticks\CoinLeopard.DB.Ticks.csproj">
+      <PrivateAssets>all</PrivateAssets>
+    </ProjectReference>
+    <ProjectReference Include="..\CoinLeopard.DB\CoinLeopard.DB.csproj">
+      <PrivateAssets>all</PrivateAssets>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <!-- Explicitly bundle the project reference DLLs since PrivateAssets=all excludes them from lib -->
+    <None Include="$(OutputPath)CoinLeopard.DB.dll" Pack="true" PackagePath="lib/$(TargetFramework)/" Visible="false" />
+    <None Include="$(OutputPath)CoinLeopard.DB.Entities.dll" Pack="true" PackagePath="lib/$(TargetFramework)/" Visible="false" />
+    <None Include="$(OutputPath)CoinLeopard.DB.Migrations.PostgreSQL.dll" Pack="true" PackagePath="lib/$(TargetFramework)/" Visible="false" />
+    <None Include="$(OutputPath)CoinLeopard.DB.Ticks.dll" Pack="true" PackagePath="lib/$(TargetFramework)/" Visible="false" />
   </ItemGroup>
 </Project>

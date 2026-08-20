@@ -12,14 +12,15 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace CoinLeopard.DB.Migrations.PostgreSQL.Migrations
 {
     [DbContext(typeof(CoinLeopardContext))]
-    [Migration("20221210182650_PositionBatching")]
-    partial class PositionBatching
+    [Migration("20260820150734_Initial")]
+    partial class Initial
     {
+        /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "6.0.10")
+                .HasAnnotation("ProductVersion", "10.0.11")
                 .HasAnnotation("Relational:MaxIdentifierLength", 63);
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
@@ -48,6 +49,9 @@ namespace CoinLeopard.DB.Migrations.PostgreSQL.Migrations
                     b.Property<decimal>("Low")
                         .HasColumnType("numeric");
 
+                    b.Property<decimal>("PercentagePriceAction")
+                        .HasColumnType("numeric");
+
                     b.Property<DateTime>("Start")
                         .HasColumnType("timestamp with time zone");
 
@@ -60,6 +64,26 @@ namespace CoinLeopard.DB.Migrations.PostgreSQL.Migrations
                     b.HasIndex("Symbol");
 
                     b.ToTable("Analyses");
+                });
+
+            modelBuilder.Entity("CoinLeopard.DB.Entities.AssetValueEntry", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime?>("Date")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<DateTime?>("MonthDate")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<decimal>("Value")
+                        .HasColumnType("numeric");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("AssetValueEntries");
                 });
 
             modelBuilder.Entity("CoinLeopard.DB.Entities.ContractTrendEntry", b =>
@@ -156,79 +180,109 @@ namespace CoinLeopard.DB.Migrations.PostgreSQL.Migrations
                     b.ToTable("CryptoPairTrends");
                 });
 
-            modelBuilder.Entity("CoinLeopard.DB.Entities.FuturesPosition", b =>
+            modelBuilder.Entity("CoinLeopard.DB.Entities.FuturesLimitOrder", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
-
-                    b.Property<Guid>("BatchId")
-                        .HasColumnType("uuid");
-
-                    b.Property<string>("ClientOrderId")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<Guid?>("CryptoPairId")
-                        .HasColumnType("uuid");
-
-                    b.Property<int>("OrderSide")
-                        .HasColumnType("integer");
-
-                    b.Property<int>("PositionSide")
-                        .HasColumnType("integer");
-
-                    b.Property<decimal>("Price")
-                        .HasColumnType("numeric");
-
-                    b.Property<decimal?>("StopPrice")
-                        .HasColumnType("numeric");
-
-                    b.Property<int>("Type")
-                        .HasColumnType("integer");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("BatchId");
-
-                    b.HasIndex("CryptoPairId");
-
-                    b.ToTable("FuturesPositions");
-                });
-
-            modelBuilder.Entity("CoinLeopard.DB.Entities.FuturesPositionBatch", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uuid");
-
-                    b.Property<decimal>("BaseAssetAmount")
-                        .HasColumnType("numeric");
-
-                    b.Property<DateTime?>("ClosedDate")
-                        .HasColumnType("timestamp with time zone");
 
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("timestamp with time zone");
 
-                    b.Property<decimal>("PNL")
-                        .HasColumnType("numeric");
+                    b.Property<bool>("Handled")
+                        .HasColumnType("boolean");
 
-                    b.Property<int>("Side")
+                    b.Property<int>("OrderSide")
                         .HasColumnType("integer");
 
                     b.Property<string>("Symbol")
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<bool>("TestMode")
+                    b.HasKey("Id");
+
+                    b.HasIndex("CreatedDate");
+
+                    b.HasIndex("Handled");
+
+                    b.ToTable("FuturesLimitOrders");
+                });
+
+            modelBuilder.Entity("CoinLeopard.DB.Entities.FuturesPosition", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<string>("AnalysisSnapshot")
+                        .HasColumnType("text");
+
+                    b.Property<string>("ClientOrderId")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<bool>("Closed")
+                        .HasColumnType("boolean");
+
+                    b.Property<Guid?>("CryptoPairId")
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime?>("DateClosed")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<DateTime>("DateOpened")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<decimal>("EntryPrice")
+                        .HasColumnType("numeric");
+
+                    b.Property<decimal>("Fees")
+                        .HasColumnType("numeric");
+
+                    b.Property<long>("OrderId")
+                        .HasColumnType("bigint");
+
+                    b.Property<int>("OrderSide")
+                        .HasColumnType("integer");
+
+                    b.Property<decimal?>("PNL")
+                        .HasColumnType("numeric");
+
+                    b.Property<int>("PositionSide")
+                        .HasColumnType("integer");
+
+                    b.Property<decimal>("Quantity")
+                        .HasColumnType("numeric");
+
+                    b.Property<long?>("StopLossOrderId")
+                        .HasColumnType("bigint");
+
+                    b.Property<decimal>("StopPrice")
+                        .HasColumnType("numeric");
+
+                    b.Property<string>("Symbol")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<long?>("TakeProfitOrderId")
+                        .HasColumnType("bigint");
+
+                    b.Property<decimal>("TakeProfitPrice")
+                        .HasColumnType("numeric");
+
+                    b.Property<int>("Type")
+                        .HasColumnType("integer");
+
+                    b.Property<bool>("Virtual")
                         .HasColumnType("boolean");
 
                     b.HasKey("Id");
 
+                    b.HasIndex("CryptoPairId");
+
                     b.HasIndex("Symbol");
 
-                    b.ToTable("FuturesPositionBatches");
+                    b.ToTable("FuturesPositions");
                 });
 
             modelBuilder.Entity("CoinLeopard.DB.Entities.FuturesSymbol", b =>
@@ -242,6 +296,72 @@ namespace CoinLeopard.DB.Migrations.PostgreSQL.Migrations
                     b.HasKey("Symbol");
 
                     b.ToTable("FuturesSymbols");
+                });
+
+            modelBuilder.Entity("CoinLeopard.DB.Entities.Heuristic", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<int>("EntrySize")
+                        .HasColumnType("integer");
+
+                    b.Property<DateTime>("LastUpdated")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("Symbol")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<decimal>("Value")
+                        .HasColumnType("numeric");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex(new[] { "Symbol", "Name" }, "IX_Heuristics_Symbol_Name");
+
+                    b.ToTable("Heuristics");
+                });
+
+            modelBuilder.Entity("CoinLeopard.DB.Entities.KlineEntry", b =>
+                {
+                    b.Property<DateTime>("Open")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<string>("Symbol")
+                        .HasColumnType("text");
+
+                    b.Property<long>("Interval")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime>("Close")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<decimal>("ClosePrice")
+                        .HasColumnType("numeric");
+
+                    b.Property<decimal>("HighPrice")
+                        .HasColumnType("numeric");
+
+                    b.Property<decimal>("LowPrice")
+                        .HasColumnType("numeric");
+
+                    b.Property<decimal>("OpenPrice")
+                        .HasColumnType("numeric");
+
+                    b.Property<decimal>("Volume")
+                        .HasColumnType("numeric");
+
+                    b.HasKey("Open", "Symbol", "Interval");
+
+                    b.HasIndex("Symbol");
+
+                    b.ToTable("KlineEntries");
                 });
 
             modelBuilder.Entity("CoinLeopard.DB.Entities.AnalysisInterval", b =>
@@ -298,23 +418,34 @@ namespace CoinLeopard.DB.Migrations.PostgreSQL.Migrations
 
             modelBuilder.Entity("CoinLeopard.DB.Entities.FuturesPosition", b =>
                 {
-                    b.HasOne("CoinLeopard.DB.Entities.FuturesPositionBatch", "Batch")
-                        .WithMany("Positions")
-                        .HasForeignKey("BatchId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("CoinLeopard.DB.Entities.CryptoPair", null)
                         .WithMany("Positions")
                         .HasForeignKey("CryptoPairId");
 
-                    b.Navigation("Batch");
+                    b.HasOne("CoinLeopard.DB.Entities.FuturesSymbol", "FuturesSymbol")
+                        .WithMany("Positions")
+                        .HasForeignKey("Symbol")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("FuturesSymbol");
                 });
 
-            modelBuilder.Entity("CoinLeopard.DB.Entities.FuturesPositionBatch", b =>
+            modelBuilder.Entity("CoinLeopard.DB.Entities.Heuristic", b =>
                 {
                     b.HasOne("CoinLeopard.DB.Entities.FuturesSymbol", "FuturesSymbol")
-                        .WithMany("Batches")
+                        .WithMany("Heuristics")
+                        .HasForeignKey("Symbol")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("FuturesSymbol");
+                });
+
+            modelBuilder.Entity("CoinLeopard.DB.Entities.KlineEntry", b =>
+                {
+                    b.HasOne("CoinLeopard.DB.Entities.FuturesSymbol", "FuturesSymbol")
+                        .WithMany("KlineEntries")
                         .HasForeignKey("Symbol")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -336,16 +467,15 @@ namespace CoinLeopard.DB.Migrations.PostgreSQL.Migrations
                     b.Navigation("Trends");
                 });
 
-            modelBuilder.Entity("CoinLeopard.DB.Entities.FuturesPositionBatch", b =>
-                {
-                    b.Navigation("Positions");
-                });
-
             modelBuilder.Entity("CoinLeopard.DB.Entities.FuturesSymbol", b =>
                 {
                     b.Navigation("Analyses");
 
-                    b.Navigation("Batches");
+                    b.Navigation("Heuristics");
+
+                    b.Navigation("KlineEntries");
+
+                    b.Navigation("Positions");
 
                     b.Navigation("TrendEntries");
                 });

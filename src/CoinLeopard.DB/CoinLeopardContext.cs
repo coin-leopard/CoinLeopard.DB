@@ -6,7 +6,7 @@ namespace CoinLeopard.DB;
 
 public class CoinLeopardContext : DbContext
 {
-	public CoinLeopardContext(DbContextOptions options) : base(options) { }
+	public CoinLeopardContext(DbContextOptions<CoinLeopardContext> options) : base(options) { }
 
 	public virtual DbSet<CryptoCurrency> CryptoCurrencies { get; set; } = null!;
 	public virtual DbSet<CryptoPair> CryptoPairs { get; set; } = null!;

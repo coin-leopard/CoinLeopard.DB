@@ -31,7 +31,7 @@ public static class CoinLeopardDbExtensions
 
 	public static async Task MigrateAsync(string connectionString)
 	{
-		var dbContextOptionsBuilder = new DbContextOptionsBuilder().UseNpgsql(
+		var dbContextOptionsBuilder = new DbContextOptionsBuilder<CoinLeopardContext>().UseNpgsql(
 			connectionString,
 			opts =>
 			{

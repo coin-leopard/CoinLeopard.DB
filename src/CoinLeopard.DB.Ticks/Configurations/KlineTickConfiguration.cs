@@ -14,6 +14,6 @@ public class KlineTickConfiguration : IEntityTypeConfiguration<KlineTick>
 
 		builder.HasIndex(row => new { row.Symbol, row.TickTime });
 
-		builder.IsHypertable(row => row.TickTime).WithChunkTimeInterval("1 hour").WithRetentionPolicy(dropAfter: "30 days");
+		builder.IsHypertable(row => row.TickTime).WithChunkTimeInterval("1 hour").WithRetentionPolicy(dropAfter: "1 day");
 	}
 }

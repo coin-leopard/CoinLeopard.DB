@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using CoinLeopard.DB.Ticks;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -12,9 +13,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace CoinLeopard.DB.Ticks.Migrations
 {
     [DbContext(typeof(TickDbContext))]
-    partial class TickDbContextModelSnapshot : ModelSnapshot
+    [Migration("20260914191836_KlinesIntervalTime")]
+    partial class KlinesIntervalTime
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

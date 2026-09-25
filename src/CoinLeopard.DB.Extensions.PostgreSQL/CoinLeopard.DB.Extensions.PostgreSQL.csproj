@@ -1,6 +1,6 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <Version>2.0.6</Version>
+    <Version>2.0.7</Version>
     <Title>CoinLeopard.DB.Extensions.PostgreSQL</Title>
     <Authors>AT Jevon</Authors>
     <Description>Coin Leopard database</Description>
@@ -40,10 +40,16 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <None Remove="bin\Debug\net10.0\CoinLeopard.DB.dll" />
+  </ItemGroup>
+  <ItemGroup>
     <!-- Explicitly bundle the project reference DLLs since PrivateAssets=all excludes them from lib -->
     <None Include="$(OutputPath)CoinLeopard.DB.dll" Pack="true" PackagePath="lib/$(TargetFramework)/" Visible="false" />
+    <None Remove="bin\Debug\net10.0\CoinLeopard.DB.Entities.dll" />
     <None Include="$(OutputPath)CoinLeopard.DB.Entities.dll" Pack="true" PackagePath="lib/$(TargetFramework)/" Visible="false" />
+    <None Remove="bin\Debug\net10.0\CoinLeopard.DB.Migrations.PostgreSQL.dll" />
     <None Include="$(OutputPath)CoinLeopard.DB.Migrations.PostgreSQL.dll" Pack="true" PackagePath="lib/$(TargetFramework)/" Visible="false" />
+    <None Remove="bin\Debug\net10.0\CoinLeopard.DB.Ticks.dll" />
     <None Include="$(OutputPath)CoinLeopard.DB.Ticks.dll" Pack="true" PackagePath="lib/$(TargetFramework)/" Visible="false" />
   </ItemGroup>
 </Project>

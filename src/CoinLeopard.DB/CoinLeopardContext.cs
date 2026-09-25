@@ -19,6 +19,7 @@ public class CoinLeopardContext : DbContext
 	public virtual DbSet<FuturesLimitOrder> FuturesLimitOrders { get; set; } = null!;
 	public virtual DbSet<Heuristic> Heuristics { get; set; } = null!;
 	public virtual DbSet<KlineEntry> KlineEntries { get; set; } = null!;
+	public virtual DbSet<VirtualStrategyRow> VirtualStrategyRows { get; set; } = null!;
 
 	protected override void OnModelCreating(ModelBuilder modelBuilder)
 	{
@@ -35,6 +36,7 @@ public class CoinLeopardContext : DbContext
 				.ConfigureFuturesLimitOrderEntity()
 				.ConfigureHeuristicEntity()
 				.ConfigureKlineEntryEntity()
+				.ConfigureVirtualStrategyRow()
 		);
 	}
 }
